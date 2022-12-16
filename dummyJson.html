@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dummyJson.css">
+    <title>DummyJason</title>
+</head>
+<body>
+   <div id="wrapper"></div>
+    <script>
+        fetch('https://dummyjson.com/products')
+        .then(response => response.json())
+        .then(result =>  showdata(result))
+        function showdata(res){
+            const products = res.products;
+    
+            products.forEach((product)=>{
+                let parent = document.createElement('div')
+            parent.classList.add('parent')
+
+            let photo = document.createElement('img')
+            photo.src  = product.thumbnail;
+            
+            parent.appendChild(photo);
+
+            let heading = document.createElement('h2')
+            heading.innerHTML  = product.title;
+            
+            parent.appendChild(heading);
+            
+            document.getElementById('wrapper').appendChild(parent)
+            })
+   
+
+   
+        }
+
+        
+      
+         
+         </script>
+</body>
+</html>
